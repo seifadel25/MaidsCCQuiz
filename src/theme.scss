@@ -1,0 +1,59 @@
+// Custom Theming for Angular Material
+// Import Angular Material's theming tools
+@use "@angular/material" as mat;
+
+// Define a custom color palette for your primary color
+$custom-teal: (
+  50: #e6f9f7,
+  100: #bfeee9,
+  200: #99e3dc,
+  300: #4dccc0,
+  400: #26c1b0,
+  500: #20b8a6,
+  // Base teal color
+  600: #1aa396,
+  700: #149185,
+  800: #0e7f74,
+  900: #086d63,
+  A100: #bfeee9,
+  A200: #99e3dc,
+  A400: #26c1b0,
+  A700: #149185,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    // Contrast color for the base color
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+// Generate palettes for your theme
+$primary-palette: mat.define-palette($custom-teal);
+$accent-palette: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$warn-palette: mat.define-palette(mat.$red-palette);
+
+// Create the theme object
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary-palette,
+      accent: $accent-palette,
+      warn: $warn-palette,
+    ),
+  )
+);
+
+// Include the common styles for Angular Material, and include theme styles for core and each component
+@include mat.core();
+@include mat.all-component-themes($theme);

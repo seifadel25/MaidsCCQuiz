@@ -1,0 +1,36 @@
+<div>
+  <!-- Button with Tailwind CSS -->
+  <div *ngIf="user">
+    <div class="mt-8">
+      <div class="grid grid-cols-8">
+        <button
+          class="bg-teal-700 hover:bg-teal-600 text-white  font-medium shadow-md py-2 ml-8 rounded col-span-1"
+          [routerLink]="['/users']"
+        >
+          <span class="text-shadow-lg">Go Back</span>
+        </button>
+
+        <!-- User details with Tailwind CSS -->
+        <div
+          class="user-details mt-4 p-4 shadow-lg rounded-lg col-span-8 bg-white w-10/12 mx-auto"
+          *ngIf="user"
+        >
+          <img
+            class="w-14 h-24 md:w-36 md:h-auto mx-auto rounded-full"
+            [src]="user.avatar"
+            alt="{{ user.first_name }} {{ user.last_name }}"
+          />
+          <h2 class="text-xl md:text-3xl text-center font-semibold my-2">
+            {{ user.first_name }} {{ user.last_name }}
+          </h2>
+          <p class="text-md text-center text-gray-600">
+            Email: {{ user.email }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isLoading" class="flex justify-center items-center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</div>
