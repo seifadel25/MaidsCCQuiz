@@ -15,9 +15,10 @@ interface PagedUsersResponse {
 }
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css'],
+    selector: 'app-user-list',
+    templateUrl: './user-list.component.html',
+    styleUrls: ['./user-list.component.css'],
+    standalone: false
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
