@@ -1,7 +1,7 @@
 // app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,25 +17,19 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-@NgModule({
-  declarations: [AppComponent, UserListComponent, UserDetailsComponent],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    FormsModule,
-    RouterModule,
-  ],
-  providers: [
-    provideAnimationsAsync()
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [AppComponent, UserListComponent, UserDetailsComponent],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatInputModule,
+        MatProgressSpinnerModule,
+        MatPaginatorModule,
+        MatButtonModule,
+        FormsModule,
+        RouterModule], providers: [
+        provideAnimationsAsync(),
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule {}

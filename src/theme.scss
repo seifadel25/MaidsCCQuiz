@@ -39,12 +39,12 @@ $custom-teal: (
 );
 
 // Generate palettes for your theme
-$primary-palette: mat.define-palette($custom-teal);
-$accent-palette: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$warn-palette: mat.define-palette(mat.$red-palette);
+$primary-palette: mat.m2-define-palette($custom-teal);
+$accent-palette: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
+$warn-palette: mat.m2-define-palette(mat.$m2-red-palette);
 
 // Create the theme object
-$theme: mat.define-light-theme(
+$theme: mat.m2-define-light-theme(
   (
     color: (
       primary: $primary-palette,
@@ -55,5 +55,6 @@ $theme: mat.define-light-theme(
 );
 
 // Include the common styles for Angular Material, and include theme styles for core and each component
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 @include mat.all-component-themes($theme);
